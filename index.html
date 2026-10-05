@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Անասնաբուժական հետագծելիություն | ՀՀ ՍԱՏՄ</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #2E7D32;
+    --green-dark: #1e5a22;
+    --green-light: #e8f3e8;
+    --gold: #C9A227;
+    --gold-light: #fdf6e3;
+    --red: #d32f2f;
+    --red-light: #ffebee;
+    --text: #1a2e1a;
+    --text-muted: #5a6a5a;
+    --text-light: #8a9a8a;
+    --border: #e0e8e0;
+    --bg: #f5f7f4;
+  }
+
+  body {
+    font-family: 'Sylfaen', 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    background: #fff;
+    border-bottom: 3px solid var(--green);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(46,125,50,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+  }
+
+  .logo { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+
+  .logo-circle {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    position: relative;
+  }
+  .logo-circle::before {
+    content: ''; position: absolute; inset: 4px;
+    border-radius: 50%; border: 1px solid var(--green);
+  }
+
+  .logo-text h1 {
+    font-size: 15px; color: var(--green); font-weight: 700;
+    letter-spacing: 0.3px; line-height: 1.2;
+  }
+  .logo-text p {
+    font-size: 10px; color: var(--text-light);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  nav {
+    display: flex; gap: 4px; align-items: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    padding: 8px 14px;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  nav a:hover { background: var(--green-light); color: var(--green); }
+  nav a.active { background: var(--green); color: #fff; }
+
+  .lang-switch { display: flex; gap: 4px; }
+  .lang-switch button {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .lang-switch button:hover { background: var(--green-light); }
+  .lang-switch button.active {
+    background: var(--green); color: #fff; border-color: var(--green);
+  }
+
+  /* ============ MAIN ============ */
+  main { min-height: calc(100vh - 180px); }
+
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--green-light) 0%, #fff 50%, var(--gold-light) 100%);
+    padding: 60px 32px 50px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h2 {
+    font-size: 34px; color: var(--text); margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .hero p {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 720px; margin: 0 auto 32px;
+  }
+
+  /* ============ CHECK BOX ============ */
+  .check-box {
+    max-width: 660px; margin: 0 auto;
+    background: #fff; border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 6px 24px rgba(46,125,50,0.10);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  .check-box h3 {
+    font-size: 18px; color: var(--green);
+    margin-bottom: 16px; font-weight: 700;
+  }
+
+  .input-row { display: flex; gap: 10px; margin-bottom: 12px; }
+  .input-row input {
+    flex: 1; padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 16px; font-family: inherit;
+    outline: none; transition: border 0.2s;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .input-row input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 4px rgba(46,125,50,0.10);
+  }
+  .input-row button {
+    padding: 14px 32px;
+    background: var(--green); color: #fff;
+    border: none; border-radius: 10px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .input-row button:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46,125,50,0.30);
+  }
+
+  .demo-hint {
+    font-size: 12px; color: var(--text-light);
+    padding-top: 12px; border-top: 1px dashed var(--border);
+  }
+  .demo-hint b { color: var(--green); }
+  .demo-hint code {
+    background: var(--green-light);
+    padding: 3px 8px; border-radius: 4px;
+    cursor: pointer; color: var(--green);
+    font-weight: 600; font-size: 11px;
+    transition: background 0.2s;
+    display: inline-block; margin: 3px 3px 0 0;
+  }
+  .demo-hint code:hover { background: #d5e8d5; }
+
+  /* ============ EXAMPLE CARDS ============ */
+  .examples-row {
+    max-width: 1000px; margin: 24px auto 60px;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .example-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px;
+    cursor: pointer; transition: all 0.2s;
+    text-align: left;
+  }
+  .example-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 4px 12px rgba(46,125,50,0.10);
+    transform: translateY(-2px);
+  }
+  .ex-code {
+    font-family: monospace; font-size: 12px;
+    color: var(--green); font-weight: 700;
+    letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .ex-name { font-size: 14px; font-weight: 600; }
+  .ex-origin { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+  /* ============ RESULT ============ */
+  .result-section {
+    max-width: 900px; margin: 40px auto 60px;
+    padding: 0 32px; display: none;
+  }
+  .result-section.active { display: block; animation: fadeIn 0.4s ease; }
+
+  .result-header {
+    background: linear-gradient(135deg, var(--green), #3a8a3f);
+    color: #fff; padding: 24px 28px;
+    border-radius: 14px 14px 0 0;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .result-header h3 { font-size: 20px; font-weight: 700; }
+  .batch-id {
+    font-family: monospace; font-size: 13px;
+    opacity: 0.85; letter-spacing: 1px; margin-top: 4px;
+  }
+  .status-badge {
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    background: var(--gold); color: #fff;
+  }
+  .status-badge.alert { background: var(--red); }
+
+  .result-body {
+    background: #fff; border: 1px solid var(--border);
+    border-top: none; border-radius: 0 0 14px 14px;
+    padding: 28px;
+  }
+
+  /* ============ TIMELINE ============ */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 15px; top: 10px; bottom: 10px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--green), var(--gold));
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 20px;
+    background: #f8fbf8; border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+    transition: all 0.2s;
+  }
+  .timeline-item:hover {
+    border-color: var(--green);
+    box-shadow: 0 4px 12px rgba(46,125,50,0.08);
+    transform: translateX(4px);
+  }
+  .timeline-item::before {
+    content: ''; position: absolute;
+    left: -32px; top: 22px;
+    width: 12px; height: 12px;
+    border-radius: 50%; background: var(--green);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--green);
+  }
+  .timeline-item.gold::before {
+    background: var(--gold); box-shadow: 0 0 0 2px var(--gold);
+  }
+  .timeline-item.red::before {
+    background: var(--red); box-shadow: 0 0 0 2px var(--red);
+  }
+
+  .ti-title {
+    font-size: 16px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ti-icon { font-size: 22px; }
+  .ti-sub {
+    font-size: 13px; color: var(--text-muted);
+    margin-top: 6px; padding-left: 30px;
+  }
+  .ti-meta {
+    font-size: 12px; color: var(--text-light);
+    margin-top: 8px; padding-left: 30px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .ti-meta b { color: var(--green); }
+
+  .cert-tag {
+    display: inline-block;
+    background: var(--green-light); color: var(--green);
+    font-size: 11px; padding: 2px 8px;
+    border-radius: 4px; font-family: monospace;
+    font-weight: 600; margin-right: 4px;
+  }
+
+  .qr-box {
+    display: flex; justify-content: center;
+    margin: 20px 0; padding: 16px;
+    background: #fff; border-radius: 10px;
+    border: 2px dashed var(--gold);
+    max-width: 220px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  .warning-box {
+    background: #fff3e0;
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px; border-radius: 6px;
+    margin-top: 16px; font-size: 13px;
+    color: #7a5a00;
+  }
+  .error-box {
+    background: var(--red-light);
+    border-left: 4px solid var(--red);
+    padding: 16px 20px; border-radius: 6px;
+    color: #b71c1c; font-size: 14px;
+  }
+
+  /* ============ CONTENT PAGES ============ */
+  .content-page {
+    max-width: 900px; margin: 0 auto;
+    padding: 48px 32px;
+  }
+  .content-page h2 {
+    font-size: 28px; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .content-page .lead {
+    font-size: 15px; color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .info-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+    margin-bottom: 16px;
+  }
+  .info-card h3 {
+    color: var(--green); font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .info-card ul {
+    list-style: none; padding-left: 0;
+  }
+  .info-card ul li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 14px; color: var(--text-muted);
+    border-bottom: 1px dashed var(--border);
+  }
+  .info-card ul li:last-child { border-bottom: none; }
+  .info-card ul li::before {
+    content: '✓'; position: absolute;
+    left: 0; top: 8px;
+    color: var(--green); font-weight: 700;
+  }
+
+  .flow {
+    display: flex; gap: 8px;
+    flex-wrap: wrap; align-items: center;
+    margin-top: 12px;
+  }
+  .flow-node {
+    background: var(--green-light);
+    color: var(--green);
+    padding: 8px 14px; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+  }
+  .flow-arrow { color: var(--gold); font-size: 20px; }
+
+  .example-detail {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+    margin-bottom: 16px;
+  }
+  .example-detail h3 {
+    color: var(--text); font-size: 18px; margin-bottom: 8px;
+  }
+  .example-detail .tag {
+    display: inline-block;
+    background: var(--red-light); color: var(--red);
+    font-size: 11px; padding: 2px 10px;
+    border-radius: 12px; font-weight: 700;
+    margin-bottom: 12px; text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .example-detail .tag.ok {
+    background: var(--green-light); color: var(--green);
+  }
+  .example-detail p {
+    font-size: 14px; color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .example-detail .result {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    padding: 12px 16px; border-radius: 6px;
+    font-size: 13px; color: var(--text);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--text); color: var(--text-light);
+    text-align: center; padding: 24px;
+    font-size: 12px; margin-top: 40px;
+  }
+
+  /* ============ APP / CABINETS ============ */
+  .app-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 32px; }
+  .app-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+  .app-head h2 { font-size: 26px; color: var(--text); }
+  .app-head .who { font-size: 13px; color: var(--text-muted); }
+  .app-head .who b { color: var(--green); }
+
+  .roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; max-width: 880px; margin: 10px auto 0; }
+  .role-card { background: #fff; border: 2px solid var(--border); border-radius: 14px; padding: 30px 22px; cursor: pointer; transition: .2s; text-align: center; }
+  .role-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(46,125,50,.12); }
+  .role-card .ic { font-size: 44px; }
+  .role-card h3 { color: var(--green); font-size: 19px; margin: 12px 0 6px; }
+  .role-card p { font-size: 13px; color: var(--text-muted); }
+
+  .tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 22px; flex-wrap: wrap; }
+  .tabs button { padding: 10px 18px; border: none; background: none; font-family: inherit; font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+  .tabs button.active { color: var(--green); border-bottom-color: var(--green); }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .kpi { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .kpi .n { font-size: 26px; font-weight: 800; color: var(--text); }
+  .kpi .n.red { color: var(--red); }
+  .kpi .l { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .tbl { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 14px; }
+  .tbl th { background: var(--green-light); color: var(--green); text-align: left; padding: 11px 14px; font-weight: 700; font-size: 13px; }
+  .tbl td { padding: 11px 14px; border-top: 1px solid var(--border); color: var(--text-muted); }
+  .tbl tr:hover td { background: #f8fbf8; }
+  .tbl .code { font-family: monospace; color: var(--green); font-weight: 700; }
+
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .badge.raw { background: var(--gold-light); color: #8a6d00; }
+  .badge.fin { background: var(--green-light); color: var(--green); }
+  .badge.red { background: var(--red-light); color: var(--red); }
+  .badge.wait { background: #fff3e0; color: #8a6d00; }
+
+  .form-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin-bottom: 18px; max-width: 640px; }
+  .form-card h3 { color: var(--green); font-size: 16px; margin-bottom: 14px; }
+  .frow { margin-bottom: 12px; }
+  .frow label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+  .frow input, .frow select { width: 100%; padding: 11px 12px; border: 2px solid var(--border); border-radius: 9px; font-family: inherit; font-size: 14px; outline: none; background: #fff; }
+  .frow input:focus, .frow select:focus { border-color: var(--green); }
+  .frow.two { display: grid; grid-template-columns: 1fr 150px; gap: 10px; }
+  .btn { padding: 12px 22px; background: var(--green); color: #fff; border: none; border-radius: 9px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: .2s; }
+  .btn:hover { background: var(--green-dark); }
+  .btn.sm { padding: 7px 13px; font-size: 12px; border-radius: 7px; }
+  .btn.gold { background: var(--gold); } .btn.gold:hover { background: #b08d1e; }
+  .btn.ghost { background: #fff; color: var(--green); border: 1px solid var(--border); }
+  .btn.ghost:hover { background: var(--green-light); }
+
+  .empty { text-align: center; color: var(--text-light); padding: 34px; font-size: 14px; }
+  .anomaly-card { background: var(--red-light); border: 1px solid #f3c6c6; border-left: 4px solid var(--red); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+  .anomaly-card b { color: var(--red); }
+  .anomaly-card .sub { font-size: 13px; color: #7a2a2a; margin-top: 4px; }
+  .back-link { color: var(--green); cursor: pointer; font-size: 13px; font-weight: 600; display: inline-block; margin-bottom: 14px; }
+  .back-link:hover { text-decoration: underline; }
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; padding: 12px 22px; border-radius: 10px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 300; opacity: 0; transition: .3s; pointer-events: none; }
+  .toast.show { opacity: 1; bottom: 34px; }
+  .toast.red { background: var(--red); }
+  nav a.cta { background: var(--gold); color: #fff; font-weight: 700; }
+  nav a.cta:hover { background: #b08d1e; color: #fff; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    header { padding: 12px 16px; }
+    .logo-text h1 { font-size: 12px; }
+    nav { order: 3; width: 100%; justify-content: center; }
+    nav a { padding: 6px 10px; font-size: 13px; }
+    .hero { padding: 40px 16px 30px; }
+    .hero h2 { font-size: 22px; }
+    .input-row { flex-direction: column; }
+    .input-row button { width: 100%; }
+    .result-section, .examples-row, .content-page { padding-left: 16px; padding-right: 16px; }
+    .timeline { padding-left: 30px; }
+    .timeline::before { left: 10px; }
+    .timeline-item::before { left: -26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="logo" onclick="navigate('home')">
+    <div class="logo-circle">🐍</div>
+    <div class="logo-text">
+      <h1>ԱՆԱՍՆԱԲՈՒԺԱԿԱՆ ՀԵՏԱԳԾԵԼԻՈՒԹՅՈՒՆ</h1>
+      <p>FSIB of RA · Traceability</p>
+    </div>
+  </div>
+
+  <nav>
+    <a data-nav="home" onclick="navigate('home')" class="active">Գլխավոր</a>
+    <a data-nav="about" onclick="navigate('about')">Համակարգի մասին</a>
+    <a data-nav="how" onclick="navigate('how')">Ինչպես է աշխատում</a>
+    <a data-nav="examples" onclick="navigate('examples')">Օրինակներ</a>
+    <a data-nav="contacts" onclick="navigate('contacts')">Կապ</a>
+    <a data-nav="login" onclick="navigate('login')" class="cta">🔐 Մուտք համակարգ</a>
+  </nav>
+
+  <div class="lang-switch">
+    <button class="active" onclick="setLang('hy', this)">🇦🇲</button>
+    <button onclick="setLang('ru', this)">🇷🇺</button>
+    <button onclick="setLang('en', this)">🇬🇧</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ PAGE: HOME ============ -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <h2 id="hero-title">Ստուգեք խմբաքանակը ըստ կոդի</h2>
+      <p id="hero-sub">Մուտքագրեք QR կոդը, որը գտնվում է ապրանքի փաթեթավորման վրա, և Համակարգը 2 վայրկյանում ցույց կտա ամբողջ շղթան՝ ֆերմայից մինչև սուպերմարկետ։</p>
+
+      <div class="check-box">
+        <h3 id="check-title">🔍 Ստուգում</h3>
+        <div class="input-row">
+          <input type="text" id="codeInput" placeholder="Մուտքագրեք QR կոդը (օր.՝ AM-2024-0001)" autocomplete="off">
+          <button onclick="checkBatch()" id="checkBtn">Ստուգել</button>
+        </div>
+        <div class="demo-hint" id="demoHint">
+          <b>Demo կոդեր (սեղմեք փորձելու համար):</b><br>
+          <code onclick="fillCode('AM-2024-0001')">AM-2024-0001</code>
+          <code onclick="fillCode('AM-2024-0002')">AM-2024-0002</code>
+          <code onclick="fillCode('AM-2024-0003')">AM-2024-0003</code>
+          <code onclick="fillCode('AM-2024-0004')">AM-2024-0004</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="examples-row" id="examplesRow">
+      <div class="example-card" onclick="fillCode('AM-2024-0001'); checkBatch();">
+        <div class="ex-code">AM-2024-0001</div>
+        <div class="ex-name">🥩 Տավարի միս</div>
+        <div class="ex-origin">Ֆերմա «Արարատ»</div>
+      </div>
+      <div class="example-card" onclick="fillCode('AM-2024-0002'); checkBatch();">
+        <div class="ex-code">AM-2024-0002</div>
+        <div class="ex-name">🌭 Երշիկ «Արարատ»</div>
+        <div class="ex-origin">Մսամթերքի գործարան №1</div>
+      </div>
+      <div class="example-card" onclick="fillCode('AM-2024-0003'); checkBatch();">
+        <div class="ex-code">AM-2024-0003</div>
+        <div class="ex-name">🥛 Կաթ</div>
+        <div class="ex-origin">Ֆերմա «Կովկաս»</div>
+      </div>
+      <div class="example-card" onclick="fillCode('AM-2024-0004'); checkBatch();">
+        <div class="ex-code">AM-2024-0004</div>
+        <div class="ex-name">🧀 Պանիր «Լոռի»</div>
+        <div class="ex-origin">Մոլոկոզավոդ X</div>
+      </div>
+    </div>
+
+    <section class="result-section" id="resultSection">
+      <div id="resultContent"></div>
+    </section>
+  </section>
+
+  <!-- ============ PAGE: ABOUT ============ -->
+  <section class="page" id="page-about">
+    <div class="content-page">
+      <h2>Համակարգի մասին</h2>
+      <p class="lead">Անասնաբուժական հսկողության ենթակա ապրանքների հետագծելիության էլեկտրոնային համակարգ</p>
+
+      <div class="info-card">
+        <h3>🎯 Նպատակներ</h3>
+        <ul>
+          <li>Ստվերային առևտրի կանխարգելում և թափանցիկության բարձրացում</li>
+          <li>Սննդամթերքի անվտանգության միասնական տեղեկատվական միջավայր</li>
+          <li>Էլեկտրոնային անասնաբուժական հավաստագրման համակարգ</li>
+          <li>Պետական վերահսկողության արդյունավետության բարձրացում</li>
+          <li>Արտահանման դիվերսիֆիկացում միջազգային ինտեգրման միջոցով</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>👥 Մասնակիցներ</h3>
+        <ul>
+          <li>Սննդամթերքի անվտանգության տեսչական մարմին</li>
+          <li>Շահագրգիռ այլ պետական մարմիններ</li>
+          <li>Տնտեսվարողներ (ֆերմաներ, գործարաններ, սուպերմարկետներ)</li>
+          <li>Սպառողներ (ստուգման հնարավորություն)</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>📦 Ապրանքներ, որոնք ենթակա են անասնաբուժական հսկողության</h3>
+        <ul>
+          <li>🥩 Միս և մսամթերք (տավար, խոզ, հավ)</li>
+          <li>🥛 Կաթ և կաթնամթերք (պանիր, կարագ, յոգուրտ)</li>
+          <li>🐟 Ձուկ և ձկնամթերք</li>
+          <li>🌭 Երշիկեղեն և պահածոներ</li>
+          <li>🐑 Բուրդ, կաշի և կենդանական ծագման այլ հումք</li>
+          <li>🐄 Կենդանի անասուններ</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>📖 Ի՞նչ է հետագծելիությունը</h3>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:12px">
+          Սննդամթերքի հետագծելիություն՝ շրջանառության մեջ գտնվող սննդամթերքը պատրաստողին և դրա հետագա սեփականատերերին՝ բացի վերջնական սպառողից, ինչպես նաև սննդամթերքի և պարենային հումքի ծագման վայրը փաստաթղթերի (թղթային և էլեկտրոնային) միջոցով պարզելու հնարավորությունը։
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: HOW ============ -->
+  <section class="page" id="page-how">
+    <div class="content-page">
+      <h2>Ինչպես է աշխատում</h2>
+      <p class="lead">Համակարգը հետևում է արտադրանքի շարժին ամբողջ մատակարարման շղթայում</p>
+
+      <div class="info-card">
+        <h3>🔄 Հիմնական շղթա</h3>
+        <div class="flow">
+          <span class="flow-node">🐄 Ֆերմա</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">🏭 Գործարան</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">🔪 Արտադրամաս</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">📦 Պատրաստի ապրանք</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">🏬 Սուպերմարկետ</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-node">👤 Սպառող</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>📜 Բիզնես-գործընթաց (Սլայդ 6)</h3>
+        <ul>
+          <li>Տնտեսվարողը դիմում է Տեսչական մարմին և դառնում Համակարգի օգտատեր</li>
+          <li>Ձևակերպում է էլեկտրոնային հավաստագրեր՝ ցույց տալով գործունեության փուլերը</li>
+          <li>Պետական վերահսկիչը վերլուծում է տեղեկատվությունը և հայտնաբերում անհամապատասխանությունները</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>🔗 Հավաստագրման փուլեր</h3>
+        <ul>
+          <li>Հումքի ներմուծում կամ տեղափոխում</li>
+          <li>Հումքի ընդունում գործարանում (հավաստագիրը մարվում է)</li>
+          <li>Հումքի տեղափոխում արտադրամաս</li>
+          <li>Պատրաստի արտադրանքի հավաստագրում</li>
+          <li>Արտադրանքի ուղարկում իրացման ցանց (ըստ խմբաքանակի)</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>🤖 Արհեստական բանականություն</h3>
+        <p style="font-size:14px;color:var(--text-muted)">
+          Համակարգում ձևակերպվող միլիոնավոր հավաստագրերի տվյալները վերլուծվում են ԱԲ-ի կողմից։ ԱԲ-ն գեներացնում է արտադրված այն խմբաքանակները, որոնց արտադրությունը հնարավոր չէր իրականացնել այդ քանակությամբ հումքով՝ թույլ տալով թիրախային վերահսկողություն։
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: EXAMPLES ============ -->
+  <section class="page" id="page-examples">
+    <div class="content-page">
+      <h2>Օրինակներ</h2>
+      <p class="lead">Ինչպես է Համակարգը բարձրացնում պետական վերահսկողության արդյունավետությունը</p>
+
+      <div class="example-detail">
+        <span class="tag">Օրինակ 1</span>
+        <h3>🥩 Քաղաքացին օգտագործել է մսամթերք և սննդային թունավորում</h3>
+        <p>
+          Քաղաքացին գնել է երշիկ սուպերմարկետից, ունեցել է թունավորման ախտանիշներ։ ՍԱՏՄ-ն մուտքագրում է QR կոդը Համակարգում։
+        </p>
+        <div class="result">
+          <b>✅ Արդյունք.</b> Համակարգը 2 վայրկյանում ցույց է տալիս.
+          Ֆերմա «Արարատ» → Մսամթերքի գործարան №1 → Սուպերմարկետ «Երևան Սիթի»։
+          Հայտնի են՝ մատակարարները, ամսաթվերը, հավաստագրերը, խմբաքանակի չափը։
+          <br><br>
+          <b>👉 Գործողություն.</b> ՍԱՏՄ-ն 1 ժամում փակում է տվյալ խմբաքանակը և սկսում ստուգում գործարանում, ոչ թե 2 շաբաթ փնտրում։
+        </div>
+      </div>
+
+      <div class="example-detail">
+        <span class="tag">Օրինակ 2</span>
+        <h3>🧀 Կաթնամթերք արտադրող X ընկերությունը մթերել է 10 տոննա կաթ, արտադրել է 5 տոննա պանիր</h3>
+        <p>
+          Պանրի 1 կգ պատրաստելու համար անհրաժեշտ է մոտ 10 լիտր կաթ։ 10 000 լիտրից հնարավոր է ստանալ առավելագույնը 1 000 կգ պանիր, սակայն արտադրողը հայտարարել է 5 000 կգ։
+        </p>
+        <div class="result" style="background:var(--red-light);border-left-color:var(--red)">
+          <b>🚨 Անոմալիա.</b> Հնարավոր է 2 տարբերակ.
+          <br>1. Արտադրողը մթերել է ավելի շատ կաթ, բայց չի ցուցադրել Համակարգում
+          <br>2. Օգտագործվել է ոչ կաթնային հումք (օր.՝ կաթնային ճարպի փոխարինիչ)
+          <br><br>
+          <b>👉 Փորձիր ինքդ.</b> Անցիր <a onclick="navigate('home'); setTimeout(()=>{fillCode('AM-2024-0004');checkBatch();},200)" style="color:var(--green);font-weight:700;cursor:pointer;text-decoration:underline">Գլխավոր</a> և ստուգիր <b>AM-2024-0004</b> կոդը։
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: CONTACTS ============ -->
+  <section class="page" id="page-contacts">
+    <div class="content-page">
+      <h2>Կապ</h2>
+      <p class="lead">ՀՀ Սննդամթերքի անվտանգության տեսչական մարմին</p>
+
+      <div class="info-card">
+        <h3>📍 Հասցե</h3>
+        <p style="font-size:14px;color:var(--text-muted)">ք. Երևան, Կոմիտաս 49/4, ՀՀ</p>
+      </div>
+
+      <div class="info-card">
+        <h3>📞 Հեռախոս</h3>
+        <p style="font-size:14px;color:var(--text-muted)">+374 11 000 000</p>
+      </div>
+
+      <div class="info-card">
+        <h3>✉️ Էլ. փոստ</h3>
+        <p style="font-size:14px;color:var(--text-muted)">info@fsib.am</p>
+      </div>
+
+      <div class="info-card">
+        <h3>🌐 Կայք</h3>
+        <p style="font-size:14px;color:var(--text-muted)">www.fsib.am</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: LOGIN ============ -->
+  <section class="page" id="page-login">
+    <div class="app-wrap">
+      <div class="app-head"><div><h2>Մուտք համակարգ</h2><div class="who">Ընտրեք ձեր դերը համակարգում</div></div></div>
+      <div class="roles">
+        <div class="role-card" onclick="showBizPicker()">
+          <div class="ic">🏭</div>
+          <h3>Տնտեսվարող</h3>
+          <p>Ֆերմա · Գործարան · Խանութ<br>Ձևակերպել և մարել հավաստագրեր</p>
+        </div>
+        <div class="role-card" onclick="loginInspector()">
+          <div class="ic">🛡️</div>
+          <h3>Տեսչական մարմին (ՍԱՏՄ)</h3>
+          <p>Վերահսկողություն, շղթաներ,<br>ԱԲ անոմալիաների հայտնաբերում</p>
+        </div>
+        <div class="role-card" onclick="navigate('home')">
+          <div class="ic">👤</div>
+          <h3>Սպառող</h3>
+          <p>Ապրանքի ստուգում ըստ կոդի<br>(QR / խմբաքանակի կոդ)</p>
+        </div>
+      </div>
+      <div id="bizPicker" style="max-width:640px;margin:26px auto 0;"></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: BUSINESS CABINET ============ -->
+  <section class="page" id="page-business">
+    <div class="app-wrap" id="bizCab"></div>
+  </section>
+
+  <!-- ============ PAGE: INSPECTOR CABINET ============ -->
+  <section class="page" id="page-inspector">
+    <div class="app-wrap" id="inspCab"></div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  © 2024 ՀՀ Սննդամթերքի անվտանգության տեսչական մարմին · Դեմո տարբերակ
+</footer>
+
+<script>
+/* ============================================================
+   ՏՎՅԱԼՆԵՐ — 4 խմբաքանակ
+============================================================ */
+const BATCHES = {
+  "AM-2024-0001": {
+    id: "AM-2024-0001",
+    product: "Տավարի միս",
+    emoji: "🥩",
+    quantity: "500 կգ",
+    status: "raw",
+    statusText: "🌾 Հումք",
+    chain: [
+      { icon: "🐄", title: "Ֆերմա «Արարատ»", sub: "Հայաստան, Արարատի մարզ · Տավարի միս", qty: "500 կգ", date: "01.03.2024", certs: ["C-001"] },
+      { icon: "🚚", title: "Տեղափոխում դեպի գործարան", sub: "Արարատի մարզ → Երևան", qty: "500 կգ", date: "01.03.2024", certs: ["C-001"] },
+    ],
+  },
+  "AM-2024-0002": {
+    id: "AM-2024-0002",
+    product: "Երշիկ «Արարատ»",
+    emoji: "🌭",
+    quantity: "480 կգ",
+    status: "finished",
+    statusText: "✅ Պատրաստի",
+    chain: [
+      { icon: "🐄", title: "Ֆերմա «Արարատ»", sub: "Արարատի մարզ · Տավարի միս", qty: "500 կգ", date: "01.03.2024", certs: ["C-001"] },
+      { icon: "🏭", title: "Մսամթերքի գործարան №1", sub: "Երևան, Արշակունյաց 25 · Հումքի ընդունում", qty: "500 կգ", date: "02.03.2024", certs: ["C-002"], gold: true },
+      { icon: "🔪", title: "Արտադրամաս · Երշիկի գիծ", sub: "Մշակում, համեմունքներ, արտադրություն", qty: "480 կգ", date: "03.03 – 05.03.2024", certs: ["C-003", "C-004"] },
+      { icon: "🏬", title: "Սուպերմարկետ «Երևան Սիթի»", sub: "Երևան, Կոմիտաս 40 · Իրացման ցանց", qty: "480 կգ", date: "06.03.2024", certs: ["C-005"], gold: true },
+      { icon: "👤", title: "Քաղաքացի", sub: "Գնել է 0.5 կգ · Թունավորման ախտանիշներ", qty: "0.5 կգ", date: "07.03.2024", certs: [], red: true },
+    ],
+    warning: "⚠️ Ուշադրություն. այս խմբաքանակի հետ կապված գրանցվել է սննդային թունավորման դեպք։ Ստուգե՛ք շղթայի բոլոր փուլերը։",
+  },
+  "AM-2024-0003": {
+    id: "AM-2024-0003",
+    product: "Կաթ",
+    emoji: "🥛",
+    quantity: "10 000 լ",
+    status: "raw",
+    statusText: "🌾 Հումք",
+    chain: [
+      { icon: "🐄", title: "Ֆերմա «Կովկաս»", sub: "Շիրակի մարզ · Հում կաթ", qty: "10 000 լ", date: "10.03.2024", certs: ["C-006"] },
+      { icon: "🚚", title: "Տեղափոխում դեպի մոլոկոզավոդ", sub: "Շիրակ → Երևան", qty: "10 000 լ", date: "10.03.2024", certs: ["C-006"] },
+    ],
+  },
+  "AM-2024-0004": {
+    id: "AM-2024-0004",
+    product: "Պանիր «Լոռի»",
+    emoji: "🧀",
+    quantity: "5 000 կգ",
+    status: "finished",
+    statusText: "✅ Պատրաստի",
+    chain: [
+      { icon: "🐄", title: "Ֆերմա «Կովկաս»", sub: "Շիրակի մարզ · Հում կաթ", qty: "10 000 լ", date: "10.03.2024", certs: ["C-006"] },
+      { icon: "🏭", title: "Մոլոկոզավոդ X", sub: "Երևան · Հումքի ընդունում", qty: "10 000 լ", date: "11.03.2024", certs: ["C-007"], gold: true },
+      { icon: "🧀", title: "Արտադրամաս · Պանրի գիծ", sub: "Նորմա՝ 10 լ կաթ = 1 կգ պանիր", qty: "5 000 կգ", date: "13.03.2024", certs: ["C-008"], red: true },
+      { icon: "🏬", title: "Սուպերմարկետ «Կենտրոն»", sub: "Երևան · Իրացման ցանց", qty: "5 000 կգ", date: "14.03.2024", certs: ["C-009"], gold: true },
+    ],
+    warning: "🚨 ԱՆՈՄԱԼԻԱ. 10 000 լ կաթից հնարավոր է ստանալ առավելագույնը 1 000 կգ պանիր (նորման՝ 10 լ/կգ)։ Հայտարարված է 5 000 կգ — ֆիզիկապես անհնար է։ Հնարավոր է՝ օգտագործվել է ոչ կաթնային հումք կամ թաքցվել է հումքի մի մասը։",
+  },
+};
+
+/* ============================================================
+   ENTERPRISES (seed) + DB (localStorage) + helpers
+============================================================ */
+const SEED_ENTERPRISES = [
+  { id:'F1', name:'Ֆերմա «Արարատ»',        type:'farm',    typeName:'Ֆերմա',     region:'Արարատի մարզ', icon:'🐄' },
+  { id:'F2', name:'Ֆերմա «Կովկաս»',        type:'farm',    typeName:'Ֆերմա',     region:'Շիրակի մարզ',  icon:'🐄' },
+  { id:'P1', name:'Մսամթերքի գործարան №1',  type:'factory', typeName:'Գործարան',  region:'Երևան',        icon:'🏭' },
+  { id:'P2', name:'Մոլոկոզավոդ X',          type:'factory', typeName:'Գործարան',  region:'Երևան',        icon:'🏭' },
+  { id:'R1', name:'Սուպերմարկետ «Երևան Սիթի»', type:'retail', typeName:'Խանութ',  region:'Երևան',        icon:'🏬' },
+  { id:'R2', name:'Սուպերմարկետ «Կենտրոն»', type:'retail',  typeName:'Խանութ',    region:'Երևան',        icon:'🏬' },
+];
+
+const DB_KEY = 'fsib_merkur_db_v1';
+function seedDB() {
+  const batches = JSON.parse(JSON.stringify(BATCHES));
+  batches['AM-2024-0001'].owner='F1'; batches['AM-2024-0001'].toId='P1'; batches['AM-2024-0001'].redeemed=false; batches['AM-2024-0001'].anomaly=false;
+  batches['AM-2024-0003'].owner='F2'; batches['AM-2024-0003'].toId='P2'; batches['AM-2024-0003'].redeemed=false; batches['AM-2024-0003'].anomaly=false;
+  batches['AM-2024-0002'].owner='P1'; batches['AM-2024-0002'].anomaly=false; batches['AM-2024-0002'].incident=true;
+  batches['AM-2024-0004'].owner='P2'; batches['AM-2024-0004'].anomaly=true;
+  return { enterprises: JSON.parse(JSON.stringify(SEED_ENTERPRISES)), batches, seqBatch:5, seqCert:10 };
+}
+const DB = {
+  get(){ let d; try{ d=JSON.parse(localStorage.getItem(DB_KEY)); }catch(e){ d=null; } if(!d){ d=seedDB(); DB.save(d);} return d; },
+  save(d){ try{ localStorage.setItem(DB_KEY, JSON.stringify(d)); }catch(e){} },
+  reset(){ const d=seedDB(); DB.save(d); return d; }
+};
+function allBatches(){ return DB.get().batches; }
+let SESSION = { role:null, entId:null };
+
+function nextBatchCode(d){ return 'AM-2024-' + String(d.seqBatch++).padStart(4,'0'); }
+function nextCert(d){ return 'C-' + String(d.seqCert++).padStart(3,'0'); }
+function today(){ const dt=new Date(); return String(dt.getDate()).padStart(2,'0')+'.'+String(dt.getMonth()+1).padStart(2,'0')+'.'+dt.getFullYear(); }
+function parseQty(s){ const m=String(s).replace(/\s/g,'').match(/([\d.,]+)/); return m? parseFloat(m[1].replace(',','.')) : 0; }
+function qtyUnit(s){ return String(s).replace(/[\d.,\s]/g,'') || 'կգ'; }
+function ent(d,id){ return d.enterprises.find(e=>e.id===id); }
+function val(id){ const e=document.getElementById(id); return e? e.value.trim() : ''; }
+function toast(msg, red){ const t=document.getElementById('toast'); if(!t) return; t.textContent=msg; t.className='toast show'+(red?' red':''); setTimeout(()=>{ t.className='toast'+(red?' red':''); },2600); }
+
+/* ---- ԱԲ (AI) anomaly engine: raw→product ratio ---- */
+function computeAnomaly(inQty, inUnit, product, outQty){
+  const p=(product||'').toLowerCase();
+  let ratio=null, norm='';
+  if(p.includes('պանիր')||p.includes('сыр')||p.includes('cheese')){ ratio=10; norm='Նորմա՝ 10 լ կաթ = 1 կգ պանիր'; }
+  else if(p.includes('կարագ')||p.includes('масл')||p.includes('butter')){ ratio=20; norm='Նորմա՝ ~20 լ կաթ = 1 կգ կարագ'; }
+  if(ratio){
+    const maxOut=inQty/ratio;
+    if(outQty > maxOut*1.05)
+      return { norm, text:`🚨 ԱՆՈՄԱԼԻԱ. ${inQty} ${inUnit}-ից հնարավոր է ստանալ առավելագույնը ${Math.round(maxOut)} կգ (${norm})։ Հայտարարված է ${outQty} կգ — ֆիզիկապես անհնար է։` };
+    return null;
+  }
+  if(outQty > inQty*1.05)
+    return { norm:'', text:`🚨 ԱՆՈՄԱԼԻԱ. Արտադրանքի քանակը (${outQty}) գերազանցում է հումքի քանակը (${inQty} ${inUnit})։ Ֆիզիկապես անհնար է։` };
+  return null;
+}
+
+/* ============================================================
+   i18n
+============================================================ */
+const I18N = {
+  hy: {
+    heroTitle: "Ստուգեք խմբաքանակը ըստ կոդի",
+    heroSub: "Մուտքագրեք QR կոդը, որը գտնվում է ապրանքի փաթեթավորման վրա, և Համակարգը 2 վայրկյանում ցույց կտա ամբողջ շղթան՝ ֆերմայից մինչև սուպերմարկետ։",
+    checkTitle: "🔍 Ստուգում",
+    placeholder: "Մուտքագրեք QR կոդը (օր.՝ AM-2024-0001)",
+    btn: "Ստուգել",
+    demo: "Demo կոդեր (սեղմեք փորձելու համար):",
+    notFound: "❌ Խմբաքանակը չի գտնվել",
+    notFoundSub: "Ստուգե՛ք կոդը կամ փորձե՛ք Demo կոդերից մեկը։",
+  },
+  ru: {
+    heroTitle: "Проверьте партию по коду",
+    heroSub: "Введите QR-код с упаковки, и Система за 2 секунды покажет всю цепочку — от фермы до супермаркета.",
+    checkTitle: "🔍 Проверка",
+    placeholder: "Введите QR-код (напр. AM-2024-0001)",
+    btn: "Проверить",
+    demo: "Demo-коды (нажмите, чтобы попробовать):",
+    notFound: "❌ Партия не найдена",
+    notFoundSub: "Проверьте код или попробуйте один из Demo-кодов.",
+  },
+  en: {
+    heroTitle: "Check batch by code",
+    heroSub: "Enter the QR code from the package, and the System will show the entire chain — from farm to supermarket — in 2 seconds.",
+    checkTitle: "🔍 Check",
+    placeholder: "Enter QR code (e.g. AM-2024-0001)",
+    btn: "Check",
+    demo: "Demo codes (click to try):",
+    notFound: "❌ Batch not found",
+    notFoundSub: "Check the code or try one of the Demo codes.",
+  },
+};
+
+let currentLang = 'hy';
+
+/* ============================================================
+   NAVIGATION (SPA)
+============================================================ */
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) el.classList.add('active');
+
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  const link = document.querySelector(`nav a[data-nav="${page}"]`);
+  if (link) link.classList.add('active');
+
+  if (page === 'business') renderBusiness();
+  if (page === 'inspector') renderInspector();
+  if (page === 'login') { const bp = document.getElementById('bizPicker'); if (bp) bp.innerHTML = ''; }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   LANGUAGE
+============================================================ */
+function setLang(lang, btn) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const t = I18N[lang];
+  document.getElementById('hero-title').textContent = t.heroTitle;
+  document.getElementById('hero-sub').textContent = t.heroSub;
+  document.getElementById('check-title').textContent = t.checkTitle;
+  document.getElementById('codeInput').placeholder = t.placeholder;
+  document.getElementById('checkBtn').textContent = t.btn;
+
+  document.getElementById('demoHint').innerHTML = `<b>${t.demo}</b><br>
+    <code onclick="fillCode('AM-2024-0001')">AM-2024-0001</code>
+    <code onclick="fillCode('AM-2024-0002')">AM-2024-0002</code>
+    <code onclick="fillCode('AM-2024-0003')">AM-2024-0003</code>
+    <code onclick="fillCode('AM-2024-0004')">AM-2024-0004</code>`;
+}
+
+function fillCode(code) {
+  document.getElementById('codeInput').value = code;
+}
+
+/* ============================================================
+   CHECK BATCH
+============================================================ */
+function checkBatch() {
+  const input = document.getElementById('codeInput');
+  const code = input.value.trim().toUpperCase();
+  const section = document.getElementById('resultSection');
+  const content = document.getElementById('resultContent');
+
+  if (!code) {
+    content.innerHTML = `<div class="error-box">⚠️ Մուտքագրե՛ք կոդը։</div>`;
+    section.classList.add('active');
+    return;
+  }
+
+  const batch = allBatches()[code];
+
+  if (!batch) {
+    content.innerHTML = `
+      <div class="error-box">
+        <b>${I18N[currentLang].notFound}</b><br>
+        ${I18N[currentLang].notFoundSub}<br>
+        <small style="opacity:0.7">Код: ${code}</small>
+      </div>
+    `;
+    section.classList.add('active');
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+
+  let html = `
+    <div class="result-header">
+      <div>
+        <h3>${batch.emoji} ${batch.product}</h3>
+        <div class="batch-id">ID: ${batch.id} · ${batch.quantity}</div>
+      </div>
+      <div class="status-badge ${batch.status === 'finished' ? '' : 'alert'}">${batch.statusText}</div>
+    </div>
+    <div class="result-body">
+      <div class="qr-box"><canvas id="qrCanvas"></canvas></div>
+      <div class="timeline">
+  `;
+
+  batch.chain.forEach(item => {
+    const cls = item.red ? 'red' : (item.gold ? 'gold' : '');
+    html += `
+      <div class="timeline-item ${cls}">
+        <div class="ti-title"><span class="ti-icon">${item.icon}</span>${item.title}</div>
+        <div class="ti-sub">${item.sub}</div>
+        <div class="ti-meta">
+          <span>📦 <b>${item.qty}</b></span>
+          <span>📅 ${item.date}</span>
+        </div>
+        ${item.certs.length ? `<div class="ti-sub" style="margin-top:8px">📜 Հավաստագրեր: ${item.certs.map(c => `<span class="cert-tag">${c}</span>`).join('')}</div>` : ''}
+      </div>
+    `;
+  });
+
+  html += `</div>`;
+  if (batch.warning) html += `<div class="warning-box">${batch.warning}</div>`;
+  html += `</div>`;
+
+  content.innerHTML = html;
+  section.classList.add('active');
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  drawQR(batch.id);
+}
+
+/* ============================================================
+   QR (պարզ վիզուալ)
+============================================================ */
+function drawQR(text) {
+  const canvas = document.getElementById('qrCanvas');
+  if (!canvas) return;
+  const size = 180, cells = 21, cell = size / cells;
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#1a2e1a';
+
+  let hash = 0;
+  for (let i = 0; i < text.length; i++) {
+    hash = ((hash << 5) - hash) + text.charCodeAt(i);
+    hash |= 0;
+  }
+
+  for (let y = 0; y < cells; y++) {
+    for (let x = 0; x < cells; x++) {
+      const seed = Math.abs(hash * (x + 1) * (y + 7)) % 3;
+      if (seed === 0) ctx.fillRect(x * cell, y * cell, cell - 0.5, cell - 0.5);
+    }
+  }
+
+  function finder(px, py) {
+    ctx.fillStyle = '#1a2e1a'; ctx.fillRect(px, py, cell * 7, cell * 7);
+    ctx.fillStyle = '#fff'; ctx.fillRect(px + cell, py + cell, cell * 5, cell * 5);
+    ctx.fillStyle = '#1a2e1a'; ctx.fillRect(px + cell * 2, py + cell * 2, cell * 3, cell * 3);
+  }
+  finder(0, 0);
+  finder(size - cell * 7, 0);
+  finder(0, size - cell * 7);
+
+  ctx.fillStyle = '#2E7D32';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText(text, size / 2, size - 4);
+}
+
+/* ============================================================
+   LOGIN / SESSION
+============================================================ */
+function showBizPicker(){
+  const d=DB.get(); const box=document.getElementById('bizPicker');
+  box.innerHTML=`<div class="form-card"><h3>Ընտրեք ձեր ձեռնարկությունը</h3>
+    <div class="frow"><label>Ձեռնարկություն</label><select id="biz_ent">${d.enterprises.map(e=>`<option value="${e.id}">${e.icon} ${e.name} — ${e.typeName}</option>`).join('')}</select></div>
+    <button class="btn" onclick="loginBusiness(document.getElementById('biz_ent').value)">Մուտք</button>
+    <hr style="border:none;border-top:1px dashed var(--border);margin:18px 0">
+    <h3>կամ՝ գրանցել նոր ձեռնարկություն</h3>
+    <div class="frow"><label>Անվանում</label><input id="reg_name" placeholder="օր.՝ Ֆերմա «Նոր»"></div>
+    <div class="frow two"><div><label>Տեսակ</label><select id="reg_type"><option value="farm">🐄 Ֆերմա</option><option value="factory">🏭 Գործարան</option><option value="retail">🏬 Խանութ</option></select></div>
+      <div><label>Մարզ</label><input id="reg_region" placeholder="Երևան"></div></div>
+    <button class="btn gold" onclick="registerEnterprise()">Գրանցվել և մտնել</button></div>`;
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function registerEnterprise(){
+  const d=DB.get(); const name=val('reg_name'), type=val('reg_type'), region=val('reg_region')||'Երևան';
+  if(!name){ toast('Մուտքագրե՛ք անվանումը', true); return; }
+  const icon = type==='farm'?'🐄':type==='factory'?'🏭':'🏬';
+  const typeName = type==='farm'?'Ֆերմա':type==='factory'?'Գործարան':'Խանութ';
+  const id='E'+(d.enterprises.length+1)+Math.floor(Math.random()*90+10);
+  d.enterprises.push({id,name,type,typeName,region,icon}); DB.save(d);
+  toast('✅ Գրանցվեց՝ '+name); loginBusiness(id);
+}
+function loginBusiness(entId){ SESSION={role:'business',entId}; navigate('business'); }
+function loginInspector(){ SESSION={role:'inspector',entId:null}; navigate('inspector'); }
+function logout(){ SESSION={role:null,entId:null}; const bp=document.getElementById('bizPicker'); if(bp) bp.innerHTML=''; navigate('login'); }
+function viewChain(code){ navigate('home'); setTimeout(()=>{ fillCode(code); checkBatch(); }, 150); }
+
+/* ============================================================
+   BUSINESS CABINET
+============================================================ */
+function farmIssueRaw(){
+  const d=DB.get(), me=ent(d,SESSION.entId);
+  const product=val('f_product'), emoji=val('f_emoji')||'📦', qty=parseFloat(val('f_qty')), unit=val('f_unit'), toId=val('f_to');
+  if(!product||!qty){ toast('Լրացրե՛ք ապրանքը և քանակը', true); return; }
+  const code=nextBatchCode(d), c1=nextCert(d);
+  const chain=[{icon:me.icon,title:me.name,sub:me.region+' · '+product,qty:qty+' '+unit,date:today(),certs:[c1]}];
+  if(toId){ const f=ent(d,toId); chain.push({icon:'🚚',title:'Տեղափոխում → '+f.name,sub:me.region+' → '+f.region,qty:qty+' '+unit,date:today(),certs:[c1]}); }
+  d.batches[code]={id:code,product,emoji,quantity:qty+' '+unit,status:'raw',statusText:'🌾 Հումք',chain,owner:me.id,toId:toId||null,redeemed:false,anomaly:false};
+  DB.save(d); toast('✅ Հավաստագիր ձևակերպվեց՝ '+code); renderBusiness();
+}
+function factoryProduce(){
+  const d=DB.get(), me=ent(d,SESSION.entId);
+  const src=val('p_src'), product=val('p_product'), emoji=val('p_emoji')||'📦', outQty=parseFloat(val('p_qty')), unit=val('p_unit'), toId=val('p_to');
+  if(!src||!product||!outQty){ toast('Ընտրե՛ք հումք, լրացրե՛ք արտադրանք/քանակ', true); return; }
+  const sb=d.batches[src]; const inQty=parseQty(sb.quantity), inUnit=qtyUnit(sb.quantity);
+  const anom=computeAnomaly(inQty,inUnit,product,outQty);
+  const code=nextBatchCode(d), c1=nextCert(d), c2=nextCert(d);
+  const chain=sb.chain.map(s=>({...s,certs:[...(s.certs||[])]}));
+  chain.push({icon:me.icon,title:me.name,sub:'Հումքի ընդունում (մարում)',qty:sb.quantity,date:today(),certs:[c1],gold:true});
+  chain.push({icon:emoji,title:'Արտադրամաս · '+product,sub:anom?anom.norm:'Արտադրություն',qty:outQty+' '+unit,date:today(),certs:[c2],red:!!anom});
+  sb.redeemed=true;
+  d.batches[code]={id:code,product,emoji,quantity:outQty+' '+unit,status:'finished',statusText:'✅ Պատրաստի',chain,owner:me.id,toId:toId||null,redeemed:false,anomaly:!!anom,warning:anom?anom.text:null};
+  DB.save(d);
+  toast(anom?('🚨 ԱԲ անոմալիա՝ '+code):('✅ Արտադրանք ձևակերպվեց՝ '+code), !!anom);
+  renderBusiness();
+}
+function retailReceive(){
+  const d=DB.get(), me=ent(d,SESSION.entId); const code=val('r_src');
+  if(!code){ toast('Ընտրե՛ք խմբաքանակը', true); return; }
+  const b=d.batches[code];
+  b.chain.push({icon:me.icon,title:me.name,sub:me.region+' · Իրացման ցանց (մարում)',qty:b.quantity,date:today(),certs:[nextCert(d)],gold:true});
+  b.redeemed=true; b.ownerRetail=me.id;
+  DB.save(d); toast('✅ Ընդունվեց՝ '+code); renderBusiness();
+}
+function renderBusiness(){
+  const d=DB.get(), me=ent(d,SESSION.entId), box=document.getElementById('bizCab');
+  if(!me){ navigate('login'); return; }
+  const mine=Object.values(d.batches).filter(b=>b.owner===me.id);
+  const incoming=Object.values(d.batches).filter(b=>b.toId===me.id && !b.redeemed);
+  let form='';
+  if(me.type==='farm'){
+    const factories=d.enterprises.filter(e=>e.type==='factory');
+    form=`<div class="form-card"><h3>🌾 Ձևակերպել հումք (նոր խմբաքանակ)</h3>
+      <div class="frow"><label>Ապրանք</label><input id="f_product" placeholder="օր.՝ Հում կաթ / Տավարի միս"></div>
+      <div class="frow two"><div><label>Քանակ</label><input id="f_qty" type="number" placeholder="10000"></div>
+        <div><label>Միավոր</label><select id="f_unit"><option>լ</option><option>կգ</option><option>տ</option></select></div></div>
+      <div class="frow"><label>Էմոջի (ցանկությամբ)</label><input id="f_emoji" placeholder="🥛" maxlength="2"></div>
+      <div class="frow"><label>Ուղարկել գործարան</label><select id="f_to"><option value="">— պահել պահեստում —</option>${factories.map(f=>`<option value="${f.id}">${f.name}</option>`).join('')}</select></div>
+      <button class="btn" onclick="farmIssueRaw()">Ձևակերպել հավաստագիր</button></div>`;
+  } else if(me.type==='factory'){
+    const rawIn=incoming.filter(b=>b.status==='raw');
+    const retails=d.enterprises.filter(e=>e.type==='retail');
+    form=`<div class="form-card"><h3>🏭 Ընդունել հումք և արտադրել</h3>
+      <div class="frow"><label>Մուտքային հումք (մարվում է)</label><select id="p_src">${rawIn.length?rawIn.map(b=>`<option value="${b.id}">${b.id} · ${b.product} · ${b.quantity}</option>`).join(''):'<option value="">— չկա մուտքային հումք —</option>'}</select></div>
+      <div class="frow"><label>Արտադրանք</label><input id="p_product" placeholder="օր.՝ Պանիր «Լոռի»"></div>
+      <div class="frow two"><div><label>Ելք (քանակ)</label><input id="p_qty" type="number" placeholder="900"></div>
+        <div><label>Միավոր</label><select id="p_unit"><option>կգ</option><option>տ</option><option>լ</option></select></div></div>
+      <div class="frow"><label>Էմոջի</label><input id="p_emoji" placeholder="🧀" maxlength="2"></div>
+      <div class="frow"><label>Ուղարկել խանութ</label><select id="p_to"><option value="">— պահել —</option>${retails.map(r=>`<option value="${r.id}">${r.name}</option>`).join('')}</select></div>
+      <button class="btn" onclick="factoryProduce()">Ձևակերպել արտադրանք</button>
+      <p style="font-size:12px;color:var(--text-light);margin-top:10px">💡 ԱԲ-ն ինքնաշխատ ստուգում է հումք/արտադրանք հարաբերակցությունը (օր.՝ 10 լ կաթ = 1 կգ պանիր)։ Փորձե՛ք 10000 լ կաթից 5000 կգ պանիր։</p></div>`;
+  } else {
+    const prodIn=incoming.filter(b=>b.status==='finished');
+    form=`<div class="form-card"><h3>🏬 Ընդունել արտադրանք (մարել հավաստագիրը)</h3>
+      <div class="frow"><label>Մուտքային արտադրանք</label><select id="r_src">${prodIn.length?prodIn.map(b=>`<option value="${b.id}">${b.id} · ${b.product} · ${b.quantity}</option>`).join(''):'<option value="">— չկա մուտքային արտադրանք —</option>'}</select></div>
+      <button class="btn" onclick="retailReceive()">Ընդունել</button></div>`;
+  }
+  box.innerHTML=`
+    <div class="app-head">
+      <div><h2>Տնտեսվարողի կաբինետ</h2><div class="who">${me.icon} <b>${me.name}</b> · ${me.typeName} · ${me.region}</div></div>
+      <button class="btn ghost sm" onclick="logout()">Ելք</button>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="n">${mine.length}</div><div class="l">Իմ խմբաքանակները</div></div>
+      <div class="kpi"><div class="n">${incoming.length}</div><div class="l">Մուտքային (մարման)</div></div>
+      <div class="kpi"><div class="n ${mine.some(b=>b.anomaly)?'red':''}">${mine.filter(b=>b.anomaly).length}</div><div class="l">Անոմալիաներ</div></div>
+    </div>
+    ${form}
+    <h3 style="color:var(--green);margin:22px 0 12px">Իմ խմբաքանակները</h3>
+    ${mine.length?`<table class="tbl"><thead><tr><th>Կոդ</th><th>Ապրանք</th><th>Քանակ</th><th>Կարգավիճակ</th><th></th></tr></thead><tbody>
+      ${mine.map(b=>`<tr><td class="code">${b.id}</td><td>${b.emoji} ${b.product}</td><td>${b.quantity}</td>
+        <td>${b.anomaly?'<span class="badge red">🚨 Անոմալիա</span>':(b.status==='finished'?'<span class="badge fin">Պատրաստի</span>':'<span class="badge raw">Հումք</span>')}</td>
+        <td><button class="btn ghost sm" onclick="viewChain('${b.id}')">Շղթա</button></td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Դեռ չկան խմբաքանակներ։ Ձևակերպե՛ք առաջինը վերևում։</div>'}`;
+}
+
+/* ============================================================
+   INSPECTOR CABINET
+============================================================ */
+function renderInspector(){
+  const d=DB.get(), box=document.getElementById('inspCab');
+  const all=Object.values(d.batches);
+  const anomalies=all.filter(b=>b.anomaly), incidents=all.filter(b=>b.incident);
+  box.innerHTML=`
+    <div class="app-head"><div><h2>Տեսչական մարմնի կաբինետ</h2><div class="who">🛡️ <b>ՍԱՏՄ</b> · Պետական վերահսկողություն</div></div>
+      <button class="btn ghost sm" onclick="logout()">Ելք</button></div>
+    <div class="kpis">
+      <div class="kpi"><div class="n">${all.length}</div><div class="l">Խմբաքանակ/հավաստագիր</div></div>
+      <div class="kpi"><div class="n">${d.enterprises.length}</div><div class="l">Տնտեսվարողներ</div></div>
+      <div class="kpi"><div class="n ${anomalies.length?'red':''}">${anomalies.length}</div><div class="l">🚨 ԱԲ անոմալիաներ</div></div>
+      <div class="kpi"><div class="n ${incidents.length?'red':''}">${incidents.length}</div><div class="l">⚠️ Միջադեպեր</div></div>
+    </div>
+    <div class="tabs">
+      <button class="active" onclick="inspTab('all',this)">Բոլորը</button>
+      <button onclick="inspTab('anom',this)">🚨 ԱԲ անոմալիաներ</button>
+      <button onclick="inspTab('trace',this)">🔎 Հետագծում</button>
+    </div>
+    <div id="inspBody"></div>`;
+  inspTab('all');
+}
+function inspTab(tab, btn){
+  if(btn){ document.querySelectorAll('#inspCab .tabs button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+  const d=DB.get(), body=document.getElementById('inspBody'), all=Object.values(d.batches);
+  if(tab==='all'){
+    body.innerHTML=`<table class="tbl"><thead><tr><th>Կոդ</th><th>Ապրանք</th><th>Քանակ</th><th>Տնտեսվարող</th><th>Կարգավիճակ</th><th></th></tr></thead><tbody>
+      ${all.map(b=>{const o=ent(d,b.owner); return `<tr><td class="code">${b.id}</td><td>${b.emoji} ${b.product}</td><td>${b.quantity}</td><td>${o?o.name:'—'}</td>
+        <td>${b.anomaly?'<span class="badge red">🚨 Անոմալիա</span>':(b.incident?'<span class="badge wait">⚠️ Միջադեպ</span>':(b.status==='finished'?'<span class="badge fin">Պատրաստի</span>':'<span class="badge raw">Հումք</span>'))}</td>
+        <td><button class="btn ghost sm" onclick="viewChain('${b.id}')">Շղթա</button></td></tr>`;}).join('')}
+    </tbody></table>`;
+  } else if(tab==='anom'){
+    const an=all.filter(b=>b.anomaly);
+    body.innerHTML = an.length ? an.map(b=>{const o=ent(d,b.owner); return `<div class="anomaly-card">
+      <b>🚨 ${b.id} · ${b.emoji} ${b.product}</b> <span class="badge red" style="margin-left:6px">${o?o.name:''}</span>
+      <div class="sub">${b.warning||'Հումք/արտադրանք անհամապատասխանություն։'}</div>
+      <button class="btn sm" style="margin-top:10px" onclick="viewChain('${b.id}')">Դիտել շղթան</button></div>`;}).join('')
+      : '<div class="empty">✅ Անոմալիաներ չեն հայտնաբերվել։</div>';
+  } else {
+    body.innerHTML=`<div class="form-card"><h3>🔎 Հետագծում ըստ կոդի</h3>
+      <div class="frow"><label>Խմբաքանակի կոդ</label><input id="trace_code" placeholder="AM-2024-0002"></div>
+      <button class="btn" onclick="(function(){var c=document.getElementById('trace_code').value.trim().toUpperCase(); if(c) viewChain(c); else toast('Մուտքագրե՛ք կոդը',true);})()">Հետագծել</button>
+      <p style="font-size:12px;color:var(--text-light);margin-top:10px">💡 Օր.՝ AM-2024-0002 (թունավորման դեպք) կամ AM-2024-0004 (անոմալիա)։</p></div>`;
+  }
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('codeInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkBatch();
+  });
+});
+</script>
+</body>
+</html>
